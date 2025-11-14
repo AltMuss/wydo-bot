@@ -1,16 +1,15 @@
 # WYDO, You Drop Out?! 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WYDO, stands for `WYDO, You Drop Out`, is a bot that helps you, a college student,
+to maintain your overall college career by predicting your next semester's performance
+based on the past semesters, or simply, predicts whether you're going to drop out
+next semester or not.
 
-Currently, two official plugins are available:
+Don't let your parents down for your gross and poor performance as a college student!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is our group project for _Discrete Math_ class, and we'rehoping that it makes sense, if any.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
+<!--
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
@@ -71,3 +70,4 @@ export default defineConfig([
   },
 ])
 ```
+-->
