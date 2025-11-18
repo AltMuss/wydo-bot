@@ -14,8 +14,8 @@ function NavButton({ to, end = false, children }: NavButtonProps) {
     <NavLink to={to} end={end}
       className={({ isActive }) =>
         isActive
-          ? "px-5 py-2 rounded-lg text-slate-200 bg-cyan-600 shadow-md transition"
-          : "px-5 py-2 rounded-lg text-slate-600 hover:text-slate-950 transition"
+          ? "px-5 py-3 rounded-lg text-slate-200 bg-cyan-600 shadow-md transition"
+          : "px-5 py-3 rounded-lg text-slate-600 hover:text-slate-950 transition"
       }
     >
       {children}
@@ -26,7 +26,7 @@ function NavButton({ to, end = false, children }: NavButtonProps) {
 function Header() {
   return (
     <header className="font-medium">
-      <section className="flex items-center justify-between px-6 py-7 w-full">
+      <section className="flex items-center justify-between px-0 py-7 w-full">
         {/* left header */}
         <div className="">
           <span className="text-xl bg-cyan-600">WYDO</span>

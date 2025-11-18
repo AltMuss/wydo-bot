@@ -5,13 +5,12 @@
 
 @layer base {
   :root {
-    @apply font-mono text-slate-300;
-    line-height: 1.5;
+    @apply font-lexend text-slate-700;
     font-weight: 400;
 
-    background-color: #242424;
+    background-color: #f1f5f9;
     color-scheme: light dark;
-    
+
     /* render optimizations */
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -19,12 +18,16 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  @media (prefers-color-scheme: light) {
+  * {
+    outline: 0px solid red;
+  }
+
+  /* @media (prefers-color-scheme: light) {
     :root {
       color: #213547;
       background-color: #ffffff;
     }
-  }
+  } */
 }
 
 @layer components {}
