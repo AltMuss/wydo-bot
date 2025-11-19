@@ -1,57 +1,59 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavButton, IconButton } from '../HeaderComps';
+import { useLang } from '../../context/LangContext';
 
 function Header() {
+  /*
+   *  t = language's texts list/table
+   *  toggleLang() = toggle the language (id or en)
+   *  lang = get current language state value
+   */
+  const { t, toggleLang, lang } = useLang()
   const [theme, setTheme] = useState<"light" | "dark">("light")
-  const [lang, setLang] = useState<"id" | "en">("id")
 
   function toggleTheme() {
     setTheme(t => t === "light" ? "dark" : "light")
     // future: add document.documentElement.classList toggle etc.
   }
 
-  function toggleLang() {
-    setLang(l => l === "id" ? "en" : "id")
-    // future: integrate translation logic
-  }
-
   return (
-    <header className="font-medium">
-      <section className="flex items-center justify-between px-0 py-7 w-full">
+    <header className="fixed top-0 left-0 right-0 z-50 font-medium bg-slate-100 shadow-sm">
+      <section className="flex items-center justify-between px-16 py-3 w-full">
         {/* left: WYDO homepage */}
         <div className="">
-          <span className="text-xl bg-cyan-600">WYDO</span>
+          <span className="px-2 py-1 text-xl text-emerald-100 bg-cyan-600"><NavLink to="/">WYDO</NavLink></span>
         </div>
 
         {/* centre: navlinks */}
         <div>
           <nav>
-            <ul className="flex gap-6">
-              <li><NavButton to="/" end>Home</NavButton></li>
-              <li><NavButton to="/predict">Predict!</NavButton></li>
-              <li><NavButton to="/about">About</NavButton></li>
+            <ul className="flex gap-3">
+              <li><NavButton to="/" end>{t.header.home}</NavButton></li>
+              <li><NavButton to="/predict">{t.header.predict}</NavButton></li>
+              <li><NavButton to="/about">{t.header.about}</NavButton></li>
             </ul>
           </nav>
         </div>
 
         {/* right: theme and lang toggles */}
         <div className="flex gap-1 text-xl">
+          {/* lang button */}
           <IconButton
             onClick={toggleLang}
-            ariaLabel={`Switch language to ${lang === "id" ? "English" : "Bahasa Indonesia"}`}
-            title="Toggle language"
+            ariaLabel={`Switch language to ${t.name}`}
+            title=""
           >
-            <span className="font-extrabold">
-              {lang.toUpperCase()}
-            </span>
+            <span className="font-extrabold">{lang.toUpperCase()}</span>
           </IconButton>
 
+          {/* theme button */}
           <IconButton
             onClick={toggleTheme}
             ariaLabel={`Switch theme to ${theme === "light" ? "dark" : "light"} mode`}
-            title="Toggle theme"
+            title=""
           >
             <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
           </IconButton>
