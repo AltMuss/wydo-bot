@@ -11,13 +11,14 @@ export const TEXT = {
     },
     page: {
       home: {
-        hero: "Khawatir soal semester depan? Ayo cek.",
-        subhero: "Alat santai yang bantu kamu lihat apakah kamu lagi aman atau mulai oleng.",
+        hero: "Khawatir soal semester depan kamu? Ayo cek.",
+        subhero: "Alat bantu santai yang bantu kamu lihat apakah kamu lagi aman atau mulai hilang arah.",
         heroBtn: "Coba prediksi",
+        featHeadline: "Bisa selamatkan karir kuliah kamu"
       },
       predict: {
         head: "Prediksi Status Semester Depan",
-        subhead: "*Gratis, anonim, dan tidak akan mengambil data kamu (dan juga mengkritik nilaimu).",
+        subhead: "*Gratis, anonim, dan tidak akan mengambil data kamu (atau mengkritik nilaimu).",
       }
     },
   },
@@ -32,13 +33,14 @@ export const TEXT = {
     },
     page: {
       home: {
-        hero: "Worried about next semester? Let's check.",
+        hero: "Worried about your next semester? Let's check.",
         subhero: "A chill little tool that helps you figure out whether you’re cruising or crashing.",
         heroBtn: "Try to predict",
+        featHeadline: "May save your college career"
       },
       predict: {
         head: "Predict Next Semester's Status",
-        subhead: "*Free, anonymous, and won't take your data (and roast your GPA too).",
+        subhead: "*Free, anonymous, and won't take your data (or roast your GPA).",
       }
     },
   }
