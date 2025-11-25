@@ -6,6 +6,10 @@ type FeatArticleProps = {
   img: string; alt: string; h3: string; text: string;
 }
 
+type StepArticleProps = {
+  number: number; head: string; desc: string;
+}
+
 function FeatureArticle({ img, alt, h3, text }: FeatArticleProps) {
   return (
     <article className="flex gap-4 items-start
@@ -21,6 +25,22 @@ function FeatureArticle({ img, alt, h3, text }: FeatArticleProps) {
         <span className="text-lg text-slate-600">{text}</span>
       </div>
     </article>
+  )
+}
+
+function StepArticle({ number, head, desc }: StepArticleProps) {
+  return (
+    <div className="flex flex-col items-center text-center gap-3 rounded-xl bg-white/70 shadow-sm shadow-slate-100 px-5 py-6">
+      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-600 text-white text-sm font-semibold">
+        {number}
+      </div>
+      <h3 className="text-lg font-semibold text-slate-800">
+        {head}
+      </h3>
+      <p className="text-sm text-slate-600">
+        {desc}
+      </p>
+    </div>
   )
 }
 
@@ -77,6 +97,9 @@ function Home() {
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
               {t.page.home.featHeadline}
             </h2>
+            <p className="mt-3 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
+              {t.page.home.featSubheadline}
+            </p>
           </div>
 
           {/* feature list */}
@@ -96,6 +119,34 @@ function Home() {
             <FeatureArticle
               img={testimg} alt="placeholder"
               h3={t.page.home.feature.fourth} text={t.page.home.feature.fourth2}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* how it works, hmm */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col gap-10">
+          {/* heading and its sub */}
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
+              {t.page.home.steps.headline}
+            </h2>
+            <p className="mt-3 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
+              {t.page.home.steps.subheadline}
+            </p>
+          </div>
+
+          {/* 3 steps */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <StepArticle number={1} head={t.page.home.steps.first.head}
+              desc={t.page.home.steps.first.desc}
+            />
+            <StepArticle number={2} head={t.page.home.steps.second.head}
+              desc={t.page.home.steps.second.desc}
+            />
+            <StepArticle number={3} head={t.page.home.steps.third.head}
+              desc={t.page.home.steps.third.desc}
             />
           </div>
         </div>

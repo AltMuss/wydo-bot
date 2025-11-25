@@ -20,6 +20,7 @@ export const TEXT = {
           smallNote: "Cuma butuh semenit. Tanpa login, tanpa judgment."
         },
         featHeadline: "Amankan karier kuliah kamu",
+        featSubheadline: "Ini yang sebenarnya alat ini bisa bantu.",
         feature: {
           first: "Prediksi. Simpel. Cepat.",
           first2: "Masukin nilai kamu, dan langsung kelihatan kamu lagi aman, nanggung, atau sudah bahaya. Nggak perlu spreadsheet, nggak perlu overthinking.",
@@ -29,6 +30,22 @@ export const TEXT = {
           third2: "Coba berbagai skenario: remedi, target nilai, batas aman IPK. Semua tanpa harus pusing hitung-hitungan.",
           fourth: "Tanpa akun. Tanpa penghakiman.",
           fourth2: "Semua data tetap di browser kamu. Nggak ada akun, nggak ada email, nggak ada tracking, nggak ada dosen yang ikut ngintip.",
+        },
+        steps: {
+          headline: "Cara kerjanya",
+          subheadline: "Tiga langkah cepat. Tanpa akun, tanpa formulir ribet, cuma pakai nilai yang sudah kamu punya.",
+          first: {
+            head: "Masukkan nilai kamu",
+            desc: "Isi nilai yang sekarang atau perkiraan nilai tiap mata kuliah. Nggak perlu akurat 100%, yang penting mendekati."
+          },
+          second: {
+            head: "Atur skenarionya",
+            desc: "Coba berbagai target, remedi, atau skenario \"gimana kalau nilai matkul ini jelek?\" sampai terasa paling masuk akal."
+          },
+          third: {
+            head: "Lihat posisi kamu",
+            desc: "Dapatkan gambaran jelas tentang status semester depan. Biar kamu bisa santai, atur strategi, atau panik dengan terencana."
+          }
         },
       },
       predict: {
@@ -57,6 +74,7 @@ export const TEXT = {
           smallNote: "Takes under a minute. No login, no judgement."
         },
         featHeadline: "Secure your college career",
+        featSubheadline: "Here's what it actually helps you do.",
         feature: {
           first: "Predict. Simple. Fast.",
           first2: "Drop your grades in, and see instantly whether you're cruising, coasting, or crashing. No spreadsheets, no overthinking.",
@@ -67,13 +85,29 @@ export const TEXT = {
           fourth: "No logins. No judgment.",
           fourth2: "Everything stays in your browser. No accounts, no email, no professor watching over your shoulder."
         },
+        steps: {
+          headline: "How it works",
+          subheadline: "Three quick steps. No signup, no complicated forms, just numbers you already have.",
+          first: {
+            head: "Add your grades",
+            desc: "Enter your current or expected scores for each course. No need to be perfect, just close enough."
+          },
+          second: {
+            head: "Tweak the scenario",
+            desc: "Try different targets, retakes, or \"what if I bomb this one?\" plans until it feels realistic."
+          },
+          third: {
+            head: "See where you stand",
+            desc: "Get a clear look at your next semester’s status so you can chill, adjust, or panic strategically."
+          }
+        },
       },
       predict: {
         head: "Predict Next Semester's Status",
         subhead: "*Free, anonymous, and won't take your data (or roast your GPA).",
       }
     },
-  }
+  },
 } as const
 
 export type Lang = keyof typeof TEXT
