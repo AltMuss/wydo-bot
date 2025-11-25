@@ -151,6 +151,30 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* last cta: lets predict */}
+      <section className="py-20">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 px-6 sm:px-10 py-10 flex flex-col gap-6 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
+              {t.page.home.cta.headline}
+            </h2>
+
+            <p className="text-lg text-slate-600 max-w-xl mx-auto">{t.page.home.cta.sub}</p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                to="/predict"
+                className="inline-block px-6 py-3 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition"
+              >
+                {t.page.home.cta.button}
+              </Link>
+            </div>
+
+            <p className="text-sm text-slate-500">{t.page.home.cta.lastline}</p>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

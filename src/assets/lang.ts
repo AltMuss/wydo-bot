@@ -47,6 +47,12 @@ export const TEXT = {
             desc: "Dapatkan gambaran jelas tentang status semester depan. Biar kamu bisa santai, atur strategi, atau panik dengan terencana."
           }
         },
+        cta: {
+          headline: "Siap mencoba?",
+          sub: "Cuma butuh semenit, dan bisa aja selamatkan semester kamu. Tanpa login, tanpa risiko, cuma kejelasan.",
+          button: "Coba sekarang",
+          lastline: "Semua berjalan di browser kamu. Nggak ada yang disimpan di server.",
+        }
       },
       predict: {
         head: "Prediksi Status Semester Depan",
@@ -100,6 +106,12 @@ export const TEXT = {
             head: "See where you stand",
             desc: "Get a clear look at your next semester’s status so you can chill, adjust, or panic strategically."
           }
+        },
+        cta: {
+          headline: "Ready to try?",
+          sub: "Takes under a minute, and might save your semester. No login, no risk, just clarity.",
+          button: "Try it now",
+          lastline: "Works in your browser. Nothing gets stored on a server.",
         },
       },
       predict: {
