@@ -12,20 +12,28 @@ type StepArticleProps = {
 
 function FeatureArticle({ img, alt, h3, text }: FeatArticleProps) {
   return (
-    <article className="flex gap-4 items-start
-      rounded-xl bg-white/50 shadow-sm shadow-slate-100 px-4 py-4 hover:shadow-md hover:bg-white transition"
+    <article
+      className="rounded-2xl bg-white/60 shadow-sm shadow-slate-100
+      px-4 py-4 sm:px-5 sm:py-5
+      flex flex-col gap-3 hover:shadow-md hover:bg-white transition"
     >
-      <div className="flex-shrink-0 w-20 sm:w-32 lg:w-48" style={{ aspectRatio: "1/1" }}>
-        <img src={img} alt={alt} loading="lazy"
-          className="w-full h-full rounded-md object-cover"
-        />
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div
+          className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-sm overflow-hidden"
+        >
+          <img src={img} alt={alt} loading="lazy" className="w-full h-full object-cover" />
+        </div>
+
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-800 leading-snug">
+          {h3}
+        </h3>
       </div>
-      <div className="flex flex-col">
-        <h3 className="text-[1.75rem] text-slate-700 font-medium">{h3}</h3>
-        <span className="text-lg text-slate-600">{text}</span>
-      </div>
+
+      <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+        {text}
+      </p>
     </article>
-  )
+  );
 }
 
 function StepArticle({ number, head, desc }: StepArticleProps) {
@@ -51,19 +59,19 @@ function Home() {
     <main>
       {/* hero */}
       <section className="h-screen flex items-center">
-        <div className="flex flex-col items-center gap-6 text-center px-4 w-full">
+        <div className="flex flex-col items-center gap-2 md:gap-3 lg:gap-5 text-center px-4 w-full">
           {/* ekstiny badge */}
-          <p className="inline-flex items-center rounded-full bg-cyan-50 px-3 py-1 text-sm font-medium text-cyan-700">
+          <p className="inline-flex items-center rounded-full bg-cyan-50 px-3 py-1 text-[0.75rem] md:text-sm font-medium text-cyan-700">
             {t.page.home.heros.badge}
           </p>
 
           {/* main heading */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-3xl">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold max-w-3xl">
             {t.page.home.hero}
           </h1>
 
           {/* subheading */}
-          <p className="text-lg text-slate-600 max-w-2xl">
+          <p className="text-base text-slate-600 max-w-2xl">
             {t.page.home.subhero}
           </p>
 
@@ -90,8 +98,8 @@ function Home() {
       </section>
 
       {/* features? */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto flex flex-col gap-10 px-4">
+      <section className="py-14">
+        <div className="max-w-4xl mx-auto flex flex-col gap-10 px-2 sm:px-4">
           {/* heading + intro */}
           <div className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
@@ -103,7 +111,7 @@ function Home() {
           </div>
 
           {/* feature list */}
-          <div className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <FeatureArticle
               img={testimg} alt="placeholder"
               h3={t.page.home.feature.first} text={t.page.home.feature.first2}
@@ -126,7 +134,7 @@ function Home() {
 
       {/* how it works, hmm */}
       <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 flex flex-col gap-10">
+        <div className="max-w-4xl mx-auto px-2 flex flex-col gap-10">
           {/* heading and its sub */}
           <div className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
@@ -154,7 +162,7 @@ function Home() {
 
       {/* last cta: lets predict */}
       <section className="py-20">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-2">
           <div className="rounded-2xl bg-slate-50 border border-slate-200 px-6 sm:px-10 py-10 flex flex-col gap-6 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
               {t.page.home.cta.headline}
