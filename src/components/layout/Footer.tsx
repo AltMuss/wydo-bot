@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <footer className="border-t border-slate-200 py-8">
-      <div className="max-w-3xl mx-auto px-6 md:px-0 flex flex-col items-center gap-4">
+      <div className="mx-auto px-6 xl:px-32 flex flex-col items-center gap-4">
         {/* upper div: desc + navlinks */}
         <div className="flex flex-col md:flex-row items-center gap-3 md:justify-between w-full">
           {/* brand + short desc lol */}
