@@ -37,9 +37,9 @@ export function IconButton({ onClick, ariaLabel, title, className = "", children
       onClick={onClick}
       aria-label={ariaLabel}
       title={title}
-      className={`inline-flex items-center justify-center p-1.5 rounded-lg
-      text-slate-600 hover:text-slate-950 transition
-      ${className}`}
+      className={`items-center justify-center text-slate-600 hover:text-slate-950 transition
+        ${className}`
+      }
     >
       {children}
     </button>
