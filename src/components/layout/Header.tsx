@@ -1,11 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faMoon, faSun, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavButton, IconButton } from '../HeaderComps';
 import { useLang } from '../../context/LangContext';
-
-// need xl: or 1280 min width for dropdown header
 
 function Header() {
   /*
@@ -13,57 +11,97 @@ function Header() {
    *  toggleLang() = toggle the language (id or en)
    *  lang = get current language state value
    */
-  const { t, toggleLang, lang } = useLang()
-  const [theme, setTheme] = useState<"light" | "dark">("light")
+  const { t, toggleLang, lang } = useLang();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   function toggleTheme() {
     setTheme(t => t === "light" ? "dark" : "light")
     // future: add document.documentElement.classList toggle etc.
   }
 
+  console.log(isMenuOpen)
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 font-medium bg-slate-100 shadow-sm">
-      <section className="flex items-center justify-between py-3 w-full px-1 md:px-6 lg:px-14 xl:px-32">
-        {/* left: WYDO homepage */}
-        <div className="flex items-center px-4 py-0">
-          <NavLink to="/">
-            <img src="/icon.png" alt="WYDO Icon" aria-label="Go to homepage" className="h-10 w-auto" />
-          </NavLink>
-        </div>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 font-medium bg-slate-100 shadow-sm">
+        <section className="flex items-center justify-between py-2.5 w-full px-1 md:px-6 lg:px-14 xl:px-32">
+          {/* left: WYDO homepage */}
+          <div className="flex items-center px-4 py-0">
+            <NavLink to="/">
+              <img src="/icon.png" alt="WYDO Icon" aria-label="Go to homepage" className="h-10 w-auto" />
+            </NavLink>
+          </div>
 
-        {/* centre: navlinks */}
-        <div>
-          <nav>
-            <ul className="flex gap-3">
-              <li><NavButton to="/" end>{t.header.home}</NavButton></li>
-              <li><NavButton to="/predict">{t.header.predict}</NavButton></li>
-              <li><NavButton to="/about">{t.header.about}</NavButton></li>
-            </ul>
-          </nav>
-        </div>
+          {/* centre: navlinks (hidden on mobile) */}
+          <div className="hidden md:block">
+            <nav>
+              <ul className="flex gap-3">
+                <li><NavButton to="/" end>{t.header.home}</NavButton></li>
+                <li><NavButton to="/predict">{t.header.predict}</NavButton></li>
+                <li><NavButton to="/about">{t.header.about}</NavButton></li>
+              </ul>
+            </nav>
+          </div>
 
-        {/* right: theme and lang toggles */}
-        <div className="flex gap-1 text-xl">
-          {/* lang button */}
-          <IconButton
-            onClick={toggleLang}
-            ariaLabel={`Switch language to ${t.name}`}
-            title=""
-          >
-            <span className="font-extrabold">{lang.toUpperCase()}</span>
-          </IconButton>
+          {/* right: theme and lang toggles (on desktop) */}
+          <div className="gap-3.5 text-xl hidden md:flex">
+            {/* lang button */}
+            <IconButton
+              onClick={toggleLang}
+              ariaLabel={`Switch language to ${t.name}`}
+              title=""
+            >
+              <span className="font-extrabold">{lang.toUpperCase()}</span>
+            </IconButton>
 
-          {/* theme button */}
-          <IconButton
-            onClick={toggleTheme}
-            ariaLabel={`Switch theme to ${theme === "light" ? "dark" : "light"} mode`}
-            title=""
-          >
-            <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
-          </IconButton>
+            {/* theme button */}
+            <IconButton
+              onClick={toggleTheme}
+              ariaLabel={`Switch theme to ${theme === "light" ? "dark" : "light"} mode`}
+              title=""
+            >
+              <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
+            </IconButton>
+          </div>
+
+          {/* right: hamburger (on mobile) */}
+          <div className="block md:hidden">
+            <IconButton
+              onClick={() => setMenuOpen(!isMenuOpen)}
+              ariaLabel={isMenuOpen ? "Close dropdown menu" : "Open dropdown menu"}
+              className="px-2"
+            >
+              <FontAwesomeIcon icon={faBars} size="xl" />
+            </IconButton>
+          </div>
+        </section>
+      </header>
+
+      {/* mobile dropdown overlay (opened with hamburger, on mobile) */}
+      <div
+        className={`
+          fixed inset-0 z-40 bg-slate-100 md:hidden transform transition-transform duration-200 ease-out
+          ${isMenuOpen ? "translate-y-0 pointer-events-auto" : "-translate-y-full pointer-events-none"}
+        `}
+      >
+        <div className="pt-[64px]">
+          timeistickingandiwanttoburymyselfinthedepthsofafrica
         </div>
-      </section>
-    </header>
+      </div>
+    </>
   )
 }
 
