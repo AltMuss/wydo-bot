@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <footer className="border-t border-slate-200 py-8">
-      <div className="mx-auto px-6 xl:px-32 flex flex-col items-center gap-4">
+      <div className="mx-auto px-6 max-w-4xl flex flex-col items-center gap-4">
         {/* upper div: desc + navlinks */}
         <div className="flex flex-col md:flex-row items-center gap-3 md:justify-between w-full">
           {/* brand + short desc lol */}
@@ -22,7 +22,7 @@ function Footer() {
 
           {/* navlinks */}
           <nav className="mt-2">
-            <ul className="flex flex-row md:flex-col gap-6 md:gap-2 text-sm text-slate-700 underline">
+            <ul className="flex flex-row md:flex-col gap-6 md:gap-2 text-sm text-slate-700 underline text-right">
               <li><NavLink to="/" className="hover:text-slate-950">{t.header.home}</NavLink></li>
               <li><NavLink to="/predict" className="hover:text-slate-950">{t.header.predict}</NavLink></li>
               <li><NavLink to="/about" className="hover:text-slate-950">{t.header.about}</NavLink></li>
