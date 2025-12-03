@@ -32,6 +32,8 @@ const API_URL = "https://mustofa.pythonanywhere.com/api/predict";
 function PredictPage() {
   const [form, setForm] = useState<Form>(initForm);
   const [result, setResult] = useState<any>(null);
+  const [warning, setWarning] = useState<string | null>(null);
+
 
   const update = (key: keyof Form, value: any) => {
     setForm(prev => ({ ...prev, [key]: value }));
@@ -60,23 +62,23 @@ function PredictPage() {
       body: JSON.stringify(payload)
     });
 
-    
+    // Error dari backend → tampilkan warning
     if (!res.ok) {
-      const err = await res.json();   // ambil pesan error dari backend
-      alert(err.message);             // tampilkan ke user
-      return;                         // jangan lanjut ke proses sukses
+      const err = await res.json();
+      setWarning(err.message);
+      setResult(null);
+      return;
     }
 
-    
     const data = await res.json();
-
-    alert(`Probabilitas: ${data.prob}\nKategori: ${data.kategori}`);
+    setWarning(null);
     setResult(data);
 
   } catch (error) {
-    alert("Tidak dapat terhubung ke server.");
+    setWarning("Tidak dapat terhubung ke server.");
   }
 };
+
 
 
 
@@ -225,6 +227,12 @@ function PredictPage() {
               Prediksi!
             </button>
           </article>
+
+          {warning && (
+  <div className="mt-3 p-3 bg-red-100 text-red-700 rounded border border-red-300">
+    {warning}
+  </div>
+)}
 
           {/* hasil */}
           <article className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
