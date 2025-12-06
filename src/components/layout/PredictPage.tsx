@@ -59,7 +59,7 @@ function PredictPage() {
         body: JSON.stringify(payload)
       });
 
-      // Error dari backend → tampilkan warning
+      // show warning for backend error
       if (!res.ok) {
         const err = await res.json();
         setWarning(err.message);
@@ -72,7 +72,7 @@ function PredictPage() {
       setResult(data);
 
     } catch (error) {
-      setWarning("Tidak dapat terhubung ke server.");
+      setWarning("Cannot connected to the server. What a pity.");
     }
   };
 
@@ -90,11 +90,10 @@ function PredictPage() {
           </p>
         </div>
 
-        <section className="w-full max-w-4xl flex flex-col lg:flex-row gap-3">
-
+        {/* input and result cards section */}
+        <section className="w-full max-w-4xl flex flex-col lg:flex-row items-start gap-3">
           {/* input card */}
-          <article className="w-full max-w-2xl bg-white shadow-md rounded-lg p-6 space-y-6">
-
+          <article className="w-full lg:w-[55%] xl:w-[60%] bg-white shadow-md rounded-lg p-6 space-y-6">
             {/* usia */}
             <div>
               <label className="block font-semibold mb-1">Usia</label>
@@ -142,7 +141,7 @@ function PredictPage() {
                   type="number"
                   min={0}
                   max={4}
-                  step={0.01}
+                  step={0.1}
                   value={form.gpaSem1}
                   onChange={e => update("gpaSem1", Number(e.target.value))}
                   className="w-full border rounded px-3 py-2 bg-white"
@@ -184,7 +183,7 @@ function PredictPage() {
                   type="number"
                   min={0}
                   max={4}
-                  step={0.01}
+                  step={0.1}
                   value={form.gpaSem2}
                   onChange={e => update("gpaSem2", Number(e.target.value))}
                   className="w-full border rounded px-3 py-2 bg-white"
@@ -199,6 +198,7 @@ function PredictPage() {
                   type="checkbox"
                   checked={form.isScholarship}
                   onChange={e => update("isScholarship", e.target.checked)}
+                  className="cursor-pointer"
                 />
                 Penerima Beasiswa
               </label>
@@ -208,6 +208,7 @@ function PredictPage() {
                   type="checkbox"
                   checked={form.isDebtor}
                   onChange={e => update("isDebtor", e.target.checked)}
+                  className="cursor-pointer"
                 />
                 Tanggungan UKT
               </label>
@@ -216,7 +217,7 @@ function PredictPage() {
             {/* submit */}
             <button
               onClick={handlePredict}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
+              className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded transition"
             >
               Prediksi!
             </button>
@@ -229,7 +230,7 @@ function PredictPage() {
           )}
 
           {/* hasil */}
-          <article className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
+          <article className="w-full lg:w-[45%] xl:w-[40%] bg-white shadow-md rounded-lg p-6">
             <p className="uppercase font-semibold tracking-wide">Hasil Prediksi</p>
 
             {result ? (
