@@ -63,14 +63,14 @@ const techItems = [
 
 function AboutPage() {
   return (
-    <main className="mt-[115px] mb-10">
-      <section className="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-16 space-y-12">
+    <main className="mt-[100px] mb-14">
+      <section className="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-16 space-y-10">
         {/* hero */}
         <div className="text-center space-y-3">
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-800">
             About WYDO
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
             Will You Drop Out? (WYDO) is a small web tool that helps students
             estimate their next semester status without spreadsheets, panic, or
             mysterious formulas.
