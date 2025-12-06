@@ -2,6 +2,7 @@ import { useState } from "react";
 
 type Form = {
   age: number;
+  semester: number;
   isScholarship: boolean;
   isDebtor: boolean;
   totalSem1: number;
@@ -14,6 +15,7 @@ type Form = {
 
 const initForm: Form = {
   age: 17,
+  semester: 1,
   isScholarship: false,
   isDebtor: true,
   totalSem1: 8,
@@ -94,20 +96,36 @@ function PredictPage() {
         <section className="w-full max-w-4xl flex flex-col lg:flex-row items-start gap-3">
           {/* input card */}
           <article className="w-full lg:w-[55%] xl:w-[60%] bg-white shadow-md rounded-lg p-6 space-y-6">
-            {/* usia */}
-            <div>
-              <label className="block font-semibold mb-1">Usia</label>
-              <input
-                type="number"
-                min={17}
-                max={25}
-                value={form.age}
-                onChange={e => update("age", Number(e.target.value))}
-                className="w-full border rounded px-3 py-2 bg-white"
-              />
+            {/* age + semester */}
+            <div className="w-full flex flex-row items-start gap-3">
+              {/* age */}
+              <div className="flex-1">
+                <label className="w-full block font-semibold mb-1">Usia</label>
+                <input
+                  type="number"
+                  min={17}
+                  max={25}
+                  value={form.age}
+                  onChange={e => update("age", Number(e.target.value))}
+                  className="w-full border rounded px-3 py-2 bg-white"
+                />
+              </div>
+
+              {/* semester */}
+              <div className="flex-1">
+                <label className="w-full block font-semibold mb-1">Semester</label>
+                <input
+                  type="number"
+                  min={1}
+                  max={14}
+                  value={form.semester}
+                  onChange={e => update("semester", Number(e.target.value))}
+                  className="w-full border rounded px-3 py-2 bg-white"
+                />
+              </div>
             </div>
 
-            {/* semester 1 */}
+            {/* 1st semester */}
             <div className="border rounded-lg p-4 space-y-4 bg-gray-50">
               <h2 className="font-semibold text-lg">Semester 1</h2>
 
@@ -149,7 +167,7 @@ function PredictPage() {
               </div>
             </div>
 
-            {/* semester 2 */}
+            {/* 2nd semester */}
             <div className="border rounded-lg p-4 space-y-4 bg-gray-50">
               <h2 className="font-semibold text-lg">Semester 2</h2>
 
