@@ -23,7 +23,7 @@ type SemesterCardProps = {
 }
 
 type ResultCardProps = {
-  result: PredictResult | null; t: typeof TEXT[Lang];
+  result: PredictResult | null; t: typeof TEXT[Lang]; isLoading: boolean;
 }
 
 function SemesterCard({ semester, form, updateFunc }: SemesterCardProps) {
@@ -73,7 +73,7 @@ function SemesterCard({ semester, form, updateFunc }: SemesterCardProps) {
   )
 }
 
-function ResultCard({ result, t }: ResultCardProps) {
+function ResultCard({ result, t, isLoading }: ResultCardProps) {
   function getRiskInfo(prob: number) {
     if (prob < 0.35) {
       return {
@@ -102,6 +102,23 @@ function ResultCard({ result, t }: ResultCardProps) {
     }
   }
 
+  if (isLoading) {
+    return (
+      <article className="w-full bg-white shadow-md rounded-lg p-6">
+        <p className="uppercase font-semibold tracking-wide">
+          {t.page.predict.result.head}
+        </p>
+        <div className="mt-4 flex items-center gap-3 text-sm text-slate-600">
+          <span
+            className="inline-block h-4 w-4 rounded-full border-2 border-cyan-500 border-t-transparent animate-spin"
+            aria-hidden="true"
+          />
+          <span>Model sedang memprediksi...</span>
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article className="w-full">
       <p className="uppercase text-xs font-semibold tracking-wide text-slate-500 mb-2">
@@ -110,8 +127,8 @@ function ResultCard({ result, t }: ResultCardProps) {
 
       {result && typeof result.prob === "number" ? (
         (() => {
-          const prob = result.prob;                // 0–1
-          const percent = (prob * 100).toFixed(1); // "46.5"
+          const prob = result.prob;
+          const percent = (prob * 100).toFixed(1);
           const info = getRiskInfo(prob);
 
           return (

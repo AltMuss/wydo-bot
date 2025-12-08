@@ -22,13 +22,19 @@ function PredictPage() {
   const [form, setForm] = useState<Form>(initForm);
   const [result, setResult] = useState<PredictResult | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useLang()
 
   const update = (key: keyof Form, value: any) => {
     setForm(prev => ({ ...prev, [key]: value }));
   };
 
-  const handlePredict = async () => {
+  const handlePredict = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setWarning(null)
+    setIsLoading(true)
+
     const payload = {
       age: form.age,
       gender: "L",
@@ -65,6 +71,8 @@ function PredictPage() {
 
     } catch (error) {
       setWarning("Cannot connected to the server. What a pity.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -156,17 +164,25 @@ function PredictPage() {
 
             {/* submit */}
             <button
+              type="submit"
+              disabled={isLoading}
               onClick={handlePredict}
               className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded transition"
             >
-              {t.header.predict}
+              {isLoading && (
+                <span
+                  className="mr-3 inline-block h-4 w-4 rounded-full border-2 border-white/60 border-t-transparent animate-spin"
+                  aria-hidden="true"
+                />
+              )}
+              {isLoading ? t.page.predict.processing : t.header.predict}
             </button>
           </article>
 
           {/* warning + result card */}
-          <section className="w-full lg:w-[45%] xl:w-[40%] flex flex-col gap-3">
+          <section className="w-full lg:w-[45%] xl:w-[40%] flex flex-col gap-3 pt-4 lg:pt-0">
             {/* result card */}
-            <ResultCard result={result} t={t} />
+            <ResultCard result={result} t={t} isLoading={isLoading} />
 
             {/* warning card */}
             {warning && (

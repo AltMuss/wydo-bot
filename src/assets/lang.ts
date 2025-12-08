@@ -61,6 +61,7 @@ export const TEXT = {
       predict: {
         head: "Prediksi Resiko Drop Out",
         subhead: "Masukkan data akademik dua semester terakhir untuk memprediksi tingkat risiko DO.",
+        processing: "Memproses...",
         input: {
           age: "Umur",
           scholarship: "Penerima Beasiswa",
@@ -138,6 +139,7 @@ export const TEXT = {
       predict: {
         head: "Predict Drop Out's Risk",
         subhead: "Enter two last semesters academic value to predict the drop out risk.",
+        processing: "Processing...",
         input: {
           age: "Age",
           scholarship: "Scholarship",
