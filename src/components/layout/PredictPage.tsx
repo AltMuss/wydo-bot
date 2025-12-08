@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { type Form, type PredictResult, SemesterCard, ResultCard } from "../PredictPageComps";
 import { useLang } from "../../context/LangContext";
 
@@ -23,6 +23,7 @@ function PredictPage() {
   const [result, setResult] = useState<PredictResult | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const resultRef = useRef<HTMLDivElement | null>(null);
   const { t } = useLang()
 
   const update = (key: keyof Form, value: any) => {
@@ -69,6 +70,18 @@ function PredictPage() {
       setWarning(null);
       setResult(data);
 
+      // scroll to resultRef => result card
+      setTimeout(() => {
+        if (resultRef.current) {
+          const y = resultRef.current.getBoundingClientRect().top + window.scrollY;
+          const offset = 100; // avoid being overlayed by the fixed header
+
+          window.scrollTo({
+            top: y - offset,
+            behavior: "smooth"
+          });
+        }
+      }, 50);
     } catch (error) {
       setWarning("Cannot connected to the server. What a pity.");
     } finally {
@@ -182,7 +195,9 @@ function PredictPage() {
           {/* warning + result card */}
           <section className="w-full lg:w-[45%] xl:w-[40%] flex flex-col gap-3 pt-4 lg:pt-0">
             {/* result card */}
-            <ResultCard result={result} t={t} isLoading={isLoading} />
+            <div ref={resultRef}>
+              <ResultCard result={result} t={t} isLoading={isLoading} />
+            </div>
 
             {/* warning card */}
             {warning && (
